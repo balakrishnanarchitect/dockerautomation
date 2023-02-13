@@ -11,6 +11,7 @@ podTemplate(
                             }
                             stage('docker build') {
                                 sh 'sudo docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
+                                sh 'whoami'
                                 sh 'docker build -t newimage:latest .'
                                 sh 'docker images'
                                 }                   
