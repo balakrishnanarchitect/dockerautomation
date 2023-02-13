@@ -10,7 +10,8 @@ podTemplate(
                         git branch: 'main', credentialsId: 'balakrishnanarchitect', url: 'https://github.com/balakrishnanarchitect/dockerautomation.git'
                             }
                             stage('docker build') {
-                                sh 'docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
+                                //sh 'docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
+                                sh 'docker rmi $(docker images 'newimage' -q)'
                                 sh 'whoami'
                                 sh 'pwd'
                                 sh 'docker build -t newimage:latest .'
