@@ -30,7 +30,7 @@ podTemplate(
                                         sh 'docker push asia.gcr.io/indigo-plate-372313/image:latest'
                                         stage('Docker image cleanup') {
                                             sh '''docker rmi $(docker images 'newimage' -q) --force'''
-                                            sh '''docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image' -q) --force'''
+                                            sh '''docker rmi $(docker images "asia.gcr.io/indigo-plate-372313/image" -q) --force'''
                                         }
                                     }
                                 }
