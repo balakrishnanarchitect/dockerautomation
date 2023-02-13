@@ -8,13 +8,8 @@ podTemplate(
                   container('jnlp') {
                     stage('Shell Execution') {
                         sh 'docker --version'
-                        sh 'whoami'
-                        sh 'df -H'
-                        sh 'hostname'
+                        sh 'ls'
                         sh 'pwd'
-                        sh 'apt-get install wget -y'
-                        sh 'wget http://ipv4.download.thinkbroadband.com/20MB.zip'
-                        sh 'sudo docker run hello-world'
                     }
                 }
             } 
