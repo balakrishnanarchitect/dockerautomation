@@ -11,9 +11,12 @@ podTemplate(
                             }
                             stage('docker build') {
                                 //sh 'docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
+                                sh 'docker images'
                                 sh '''docker rmi $(docker images 'newimage' -q) --force'''
+                                sh '''docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image:latest' -q) --force'''
                                 sh 'whoami'
                                 sh 'pwd'
+                                sh 'docker images'
                                 sh 'docker build -t newimage:latest .'
                                 sh 'docker images'
                                 }                   
