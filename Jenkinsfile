@@ -10,8 +10,8 @@ podTemplate(
                         git branch: 'main', credentialsId: 'balakrishnanarchitect', url: 'https://github.com/balakrishnanarchitect/dockerautomation.git'
                             }
                             stage('docker build') {
-                                sh 'docker rmi $(docker images | grep 'newimage')
-                                sh 'docker rmi $(docker images | grep 'asia.gcr.io/indigo-plate-372313/image')
+                                sh 'docker rmi $(docker images | grep 'newimage')'
+                                sh 'docker rmi $(docker images | grep 'asia.gcr.io/indigo-plate-372313/image')'
                                 sh 'docker build -t newimage:latest .'
                                 sh 'docker images'
                                 }                   
