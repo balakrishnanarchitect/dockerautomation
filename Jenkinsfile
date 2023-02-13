@@ -12,8 +12,8 @@ podTemplate(
                             stage('docker build') {
                                 //sh 'docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
                                 sh 'docker images'
-                                sh '''docker rmi $(docker images 'newimage' -q) --force'''
-                                sh '''echo "removed new image file" '''
+                                //sh '''docker rmi $(docker images 'newimage' -q) --force'''
+                                //sh '''echo "removed new image file" '''
                                 sh '''docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image' -q) --force'''
                                 sh 'whoami'
                                 sh 'pwd'
