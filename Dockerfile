@@ -1,6 +1,7 @@
 FROM jenkins/inbound-agent:latest
 ## Docker installation steps:
 User root
+RUN apt install mtr -y
 RUN apt-get update -y
 RUN apt-get -y install sudo
 RUN apt-get -y install \
