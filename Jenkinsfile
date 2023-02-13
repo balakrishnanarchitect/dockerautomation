@@ -11,10 +11,10 @@ podTemplate(
                             }
                             stage('docker build') {
                                 //sh 'docker images -a | grep "newimage" | awk '{print $3}' | xargs docker rmi'
-                                sh 'docker images'
-                                sh '''docker image inspect newimage:latest && docker rmi $(docker images 'newimage' -q) --force'''
+                                //sh 'docker images'
+                                //sh '''docker image inspect newimage:latest && docker rmi $(docker images 'newimage' -q) --force'''
                                 //sh '''echo "removed new image file" '''
-                                sh '''docker image inspect asia.gcr.io/indigo-plate-372313/image:latest && docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image' -q) --force'''
+                                //sh '''docker image inspect asia.gcr.io/indigo-plate-372313/image:latest && docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image' -q) --force'''
                                 sh 'whoami'
                                 sh 'pwd'
                                 sh 'docker images'
@@ -27,7 +27,11 @@ podTemplate(
                                         sh 'gcloud auth activate-service-account --key-file=${key} --project=indigo-plate-372313'
                                         sh 'gcloud auth configure-docker'
                                         sh 'docker tag newimage:latest asia.gcr.io/indigo-plate-372313/image:latest'
-                                        sh 'docker push asia.gcr.io/indigo-plate-372313/image:latest '
+                                        sh 'docker push asia.gcr.io/indigo-plate-372313/image:latest'
+                                        stage('Docker image cleanup') {
+                                            sh '''docker rmi $(docker images 'newimage' -q) --force'''
+                                            sh '''docker rmi $(docker images 'asia.gcr.io/indigo-plate-372313/image' -q) --force'''
+                                        }
                                     }
                                 }
                             }
