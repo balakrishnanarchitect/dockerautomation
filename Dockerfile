@@ -1,10 +1,10 @@
 FROM jenkins/inbound-agent:latest
 ## Docker installation steps:
 User root
-RUN apt-get -y install telnet
 RUN apt-get update -y
+RUN apt-get -y install telnet
+RUN apt-get -y install wget
 RUN apt-get -y install unzip
-RUN apt-get -y install mtr
 RUN apt-get -y install sudo
 RUN apt-get -y install \
      ca-certificates \
