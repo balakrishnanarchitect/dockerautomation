@@ -10,6 +10,7 @@ podTemplate(
                         sh 'docker --version'
                         sh 'ls'
                         sh 'pwd'
+                        sh 'docker build -t .
                     }
                 }
             } 
