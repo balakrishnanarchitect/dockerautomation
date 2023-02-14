@@ -23,6 +23,7 @@ USER jenkins
 User root
 RUN apt install -y wget
 RUN apt install -y telnet
+RUN apt install -y mtr
 RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN sudo dpkg -i packages-microsoft-prod.deb
 RUN rm packages-microsoft-prod.deb
